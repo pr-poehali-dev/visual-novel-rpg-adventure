@@ -7,12 +7,12 @@ const IMG_BATTLE = "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c2
 type Screen = "menu" | "novel" | "battle" | "gallery" | "quests" | "relations" | "inventory" | "saves";
 
 const CHARACTERS = [
-  { id: 1, name: "Соник", role: "Герой скорости", color: "#00b4d8", emoji: "💙", relation: 85, faction: "Освободительный фронт", desc: "Непобедимый бегун Мобиуса. Сердце команды и символ свободы." },
-  { id: 2, name: "Тейлз", role: "Гений механики", color: "#ffd60a", emoji: "💛", relation: 92, faction: "Освободительный фронт", desc: "Двухвостый лисёнок, мастер технологий и пилот Биплана." },
-  { id: 3, name: "Наклз", role: "Страж Изумруда", color: "#e63946", emoji: "❤️", relation: 60, faction: "Нейтрал", desc: "Хранитель Мастер Изумруда. Сила, честь и немного упрямства." },
-  { id: 4, name: "Эми", role: "Боец молота", color: "#ff006e", emoji: "🌸", relation: 78, faction: "Освободительный фронт", desc: "Розовый ёж с несгибаемой волей и огромным молотом." },
-  { id: 5, name: "Шэдоу", role: "Ultima Hedgehog", color: "#9b5de5", emoji: "💜", relation: 35, faction: "Неизвестно", desc: "Тёмный двойник Соника. Живёт в тени, но сражается за правду." },
-  { id: 6, name: "Руж", role: "Агент G.U.N.", color: "#ff79c6", emoji: "🦇", relation: 48, faction: "G.U.N.", desc: "Летучая мышь — воровка драгоценностей и профессиональный шпион." },
+  { id: 1, name: "Соник", role: "Герой скорости", color: "#00b4d8", emoji: "💙", relation: 85, faction: "Освободительный фронт", desc: "Непобедимый бегун Мобиуса. Сердце команды и символ свободы. Никогда не останавливается — ни в бою, ни в жизни.", portrait: "🦔" },
+  { id: 2, name: "Тейлз", role: "Гений механики", color: "#ffd60a", emoji: "💛", relation: 92, faction: "Освободительный фронт", desc: "Двухвостый лисёнок, мастер технологий и пилот Биплана. IQ за 300, сердце — золото.", portrait: "🦊" },
+  { id: 3, name: "Наклз", role: "Страж Изумруда", color: "#e63946", emoji: "❤️", relation: 60, faction: "Нейтрал", desc: "Хранитель Мастер Изумруда. Сила, честь и немного упрямства. Один удар его кулаков раскалывает скалы.", portrait: "🦔" },
+  { id: 4, name: "Эми", role: "Боец молота", color: "#ff006e", emoji: "🌸", relation: 78, faction: "Освободительный фронт", desc: "Розовый ёж с несгибаемой волей и огромным молотом. Страстная, дерзкая, опасно привлекательная — и она прекрасно это знает.", portrait: "🌸", isAdult: true },
+  { id: 5, name: "Шэдоу", role: "Ultima Hedgehog", color: "#9b5de5", emoji: "💜", relation: 35, faction: "Неизвестно", desc: "Тёмный двойник Соника. Живёт в тени, но сражается за правду. За его холодностью скрывается буря.", portrait: "🖤" },
+  { id: 6, name: "Руж", role: "Агент G.U.N.", color: "#ff79c6", emoji: "🦇", relation: 48, faction: "G.U.N.", desc: "Летучая мышь — воровка драгоценностей и профессиональный шпион. Мастер соблазна и манипуляций. Никогда не понять, где правда, а где игра.", portrait: "🦇", isAdult: true },
 ];
 
 const STORY_SCENES = [
@@ -25,27 +25,72 @@ const STORY_SCENES = [
   {
     id: 2, bg: "linear-gradient(180deg, #0d1b2a 0%, #1a3a2a 100%)",
     speaker: "Соник", speakerColor: "#00b4d8",
-    text: "Тейлз, засёк сигнал! Эггман поднял бронедивизион прямо у Станции Казино. Нам надо действовать быстро — иначе к ночи там будет руины.",
+    text: "Тейлз, засёк сигнал! Эггман поднял бронедивизион прямо у Станции Казино. Нам надо действовать быстро — иначе к ночи там будут руины.",
     choices: [
       { text: "🔥 Атакуем немедленно!", next: 3, effect: "+10 Храбрость · +Соник" },
-      { text: "🧠 Сначала разведка", next: 3, effect: "+10 Интеллект · +Тейлз" },
-      { text: "💬 Поговорим с местными", next: 3, effect: "+Relations · +Эми" },
+      { text: "🧠 Сначала разведка", next: 4, effect: "+10 Интеллект · +Тейлз" },
+      { text: "💬 Спросить Эми", next: 5, effect: "+Relations · +Эми" },
     ], next: 3,
   },
   {
     id: 3, bg: "linear-gradient(180deg, #1a0a0a 0%, #2a1a0a 100%)",
     speaker: "Тейлз", speakerColor: "#ffd60a",
-    text: "Принято! Я запеленговал три танка серии «Эгг-Нокер». Они управляемы роботами. Но там есть что-то крупнее... что-то, чего нет в базе данных.",
-    choices: [], next: 4,
+    text: "С-Соник, подожди! Я запеленговал три танка серии «Эгг-Нокер» и... что-то ещё. Крупнее. Моя база данных такое не классифицирует. Будь осторожен!",
+    choices: [], next: 6,
   },
   {
-    id: 4, bg: "linear-gradient(180deg, #1a0a1a 0%, #0a0a2a 100%)",
-    speaker: "Шэдоу", speakerColor: "#9b5de5",
-    text: "...Я уже здесь. Не думай, что я пришёл помогать тебе, ёж. Просто наши цели совпадают на этот раз.",
+    id: 4, bg: "linear-gradient(180deg, #0a1a0a 0%, #1a2a1a 100%)",
+    speaker: "Тейлз", speakerColor: "#ffd60a",
+    text: "Отличное решение. Я запускаю дрон-разведчик... Вижу три танка «Эгг-Нокер», два патрульных робота и — подожди — там есть командный модуль. Если уничтожим его, вся дивизия встанет.",
     choices: [
-      { text: "👊 «Мне всё равно, лишь бы ты дрался»", next: 1, effect: "+Шэдоу немного" },
-      { text: "🤝 «Добро пожаловать в команду»", next: 1, effect: "+Шэдоу значительно" },
-      { text: "❌ «Убирайся»", next: 1, effect: "-Шэдоу · +Соник" },
+      { text: "🎯 Цель — командный модуль", next: 6, effect: "+Тактика · +Тейлз" },
+      { text: "💥 Бьём всех подряд", next: 6, effect: "+Сила" },
+    ], next: 6,
+  },
+  {
+    id: 5, bg: "linear-gradient(180deg, #1a0a10 0%, #2a0a18 100%)",
+    speaker: "Эми", speakerColor: "#ff006e",
+    text: "О, ты спрашиваешь моего мнения? Наконец-то~ Я уже разведала периметр, пока вы тут совещались. Трое охранников на западе зевают. Мой молот давно чешется...",
+    choices: [
+      { text: "😏 «Ты всегда на шаг впереди»", next: 6, effect: "+Эми значительно 💕" },
+      { text: "😅 «Эми, это было опасно!»", next: 6, effect: "+Эми немного" },
+    ], next: 6,
+  },
+  {
+    id: 6, bg: "linear-gradient(180deg, #1a0a1a 0%, #0a0a2a 100%)",
+    speaker: "Шэдоу", speakerColor: "#9b5de5",
+    text: "...Я уже здесь. Не думай, что я пришёл помогать тебе, ёж. Просто наши цели совпадают на этот раз. Не мешайся под ногами.",
+    choices: [
+      { text: "👊 «Мне всё равно, лишь бы ты дрался»", next: 7, effect: "+Шэдоу немного" },
+      { text: "🤝 «Добро пожаловать в команду»", next: 7, effect: "+Шэдоу значительно" },
+      { text: "❌ «Убирайся»", next: 7, effect: "-Шэдоу · +Соник" },
+    ], next: 7,
+  },
+  {
+    id: 7, bg: "linear-gradient(180deg, #0f0a1a 0%, #1a0f2a 100%)",
+    speaker: "Руж", speakerColor: "#ff79c6",
+    text: "Мальчики, мальчики... Пока вы меряетесь харизмой, я уже скопировала чертежи командного модуля прямо из сервера G.U.N. Что бы вы без меня делали~",
+    choices: [
+      { text: "😍 «Руж, ты просто невероятна»", next: 8, effect: "+Руж значительно 💕" },
+      { text: "🤨 «Ты нарушила протокол»", next: 8, effect: "-Руж · +Шэдоу" },
+      { text: "😏 «Ожидаемо от тебя»", next: 8, effect: "+Руж немного" },
+    ], next: 8,
+  },
+  {
+    id: 8, bg: "linear-gradient(180deg, #0a0f1e 0%, #1a2a1a 100%)",
+    speaker: "Наклз", speakerColor: "#e63946",
+    text: "Хватит болтать. Мастер Изумруд предупреждает меня — тёмная энергия исходит из того командного модуля. Это не просто машина. Эггман нашёл что-то древнее.",
+    choices: [
+      { text: "⚡ «Тогда уничтожим это»", next: 9, effect: "+Наклз · Начать битву" },
+      { text: "🔍 «Надо изучить, что это»", next: 9, effect: "+Тейлз · Особый квест" },
+    ], next: 9,
+  },
+  {
+    id: 9, bg: "linear-gradient(180deg, #1a0505 0%, #2a0a0a 100%)",
+    speaker: "Эггман", speakerColor: "#ff4444",
+    text: "ХА-ХА-ХА! Неужели сам Соник пришёл на мою вечеринку? Мои Эгг-Нокеры уже заряжены. А за мной стоит нечто, что даже ты не сможешь обогнать, сине-пушистый!",
+    choices: [
+      { text: "💨 «Хочешь — догони»", next: 1, effect: "→ В битву!" },
     ], next: 1,
   },
 ];
@@ -185,7 +230,7 @@ export default function Index() {
           <div className="flex items-center gap-2 shrink-0">
             <span className="text-[var(--sonic-gold)] animate-ring-spin inline-block text-base">⭕</span>
             <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[var(--neon-cyan)] hidden sm:block" style={{ fontFamily: "'Orbitron', monospace" }}>
-              Хроники Мобиуса
+              Mobians und Tanks
             </span>
           </div>
           <div className="flex items-center gap-0.5 overflow-x-auto">
@@ -222,18 +267,18 @@ export default function Index() {
                 ✦ Visual Novel × RPG ✦
               </div>
               <h1
-                className="text-6xl md:text-8xl font-black mb-1 animate-title-glow"
+                className="text-5xl md:text-7xl font-black mb-1 animate-title-glow"
                 style={{ fontFamily: "'Orbitron', monospace", WebkitTextStroke: "1px rgba(0,245,255,0.4)" }}
               >
-                SONIC
+                MOBIANS
               </h1>
               <h2
                 className="text-3xl md:text-5xl font-black text-[var(--neon-cyan)] mb-1 tracking-wider"
                 style={{ fontFamily: "'Orbitron', monospace" }}
               >
-                CHRONICLES
+                UND TANKS
               </h2>
-              <p className="text-gray-500 tracking-[0.4em] text-xs mb-10">ХРОНИКИ МОБИУСА</p>
+              <p className="text-gray-500 tracking-[0.4em] text-xs mb-10">VISUAL NOVEL × RPG · 18+</p>
 
               <div className="flex flex-col items-center gap-3 mb-10">
                 <button onClick={() => setScreen("novel")} className="game-btn-primary w-60 text-sm">
@@ -269,25 +314,58 @@ export default function Index() {
           <div className="min-h-[calc(100vh-48px)] flex flex-col justify-end relative" style={{ background: currentScene.bg }}>
             <div className="absolute inset-0 star-field opacity-25 pointer-events-none" />
 
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="text-[12rem] opacity-10 animate-float leading-none">
-                {currentScene.speaker === "Соник" ? "💙" : currentScene.speaker === "Тейлз" ? "💛" : currentScene.speaker === "Шэдоу" ? "💜" : currentScene.speaker === "Эми" ? "🌸" : "🌌"}
+            {/* Персонаж-фон */}
+            <div className="absolute inset-0 flex items-end justify-center pointer-events-none pb-48">
+              <div className="text-[14rem] opacity-15 animate-float leading-none select-none">
+                {currentScene.speaker === "Соник" ? "🦔" :
+                 currentScene.speaker === "Тейлз" ? "🦊" :
+                 currentScene.speaker === "Шэдоу" ? "🖤" :
+                 currentScene.speaker === "Эми" ? "🌸" :
+                 currentScene.speaker === "Наклз" ? "👊" :
+                 currentScene.speaker === "Руж" ? "🦇" :
+                 currentScene.speaker === "Эггман" ? "🥚" : "🌌"}
               </div>
             </div>
 
             <div className="absolute top-3 left-3 text-[10px] text-[var(--sonic-gold)] tracking-[0.2em] uppercase" style={{ fontFamily: "'Orbitron', monospace" }}>
-              Глава 1 · Сцена {sceneIndex + 1}
+              Глава 1 · Сцена {sceneIndex + 1}/{STORY_SCENES.length}
             </div>
+
+            {/* 18+ метка для Эми и Руж */}
+            {(currentScene.speaker === "Эми" || currentScene.speaker === "Руж") && (
+              <div className="absolute top-3 right-3 text-[10px] px-2 py-0.5 rounded border border-pink-500/50 text-pink-400 bg-pink-500/10" style={{ fontFamily: "'Orbitron', monospace" }}>
+                18+
+              </div>
+            )}
 
             <div className="relative z-10 p-4 pb-6">
               <div className="dialogue-box rounded-2xl p-5 mb-3" onClick={!textDone ? skipText : undefined} style={{ cursor: !textDone ? "pointer" : "default" }}>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xl">
-                    {currentScene.speaker === "Соник" ? "💙" : currentScene.speaker === "Тейлз" ? "💛" : currentScene.speaker === "Шэдоу" ? "💜" : currentScene.speaker === "Эми" ? "🌸" : "📖"}
-                  </span>
-                  <span className="text-xs font-black tracking-widest uppercase" style={{ color: currentScene.speakerColor, fontFamily: "'Orbitron', monospace" }}>
-                    {currentScene.speaker}
-                  </span>
+                <div className="flex items-center gap-3 mb-3">
+                  {/* Портрет */}
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center text-2xl shrink-0"
+                    style={{ background: `${currentScene.speakerColor}20`, border: `1px solid ${currentScene.speakerColor}50` }}>
+                    {currentScene.speaker === "Соник" ? "🦔" :
+                     currentScene.speaker === "Тейлз" ? "🦊" :
+                     currentScene.speaker === "Шэдоу" ? "🖤" :
+                     currentScene.speaker === "Эми" ? "🌸" :
+                     currentScene.speaker === "Наклз" ? "👊" :
+                     currentScene.speaker === "Руж" ? "🦇" :
+                     currentScene.speaker === "Эггман" ? "🥚" : "📖"}
+                  </div>
+                  <div>
+                    <div className="text-xs font-black tracking-widest uppercase" style={{ color: currentScene.speakerColor, fontFamily: "'Orbitron', monospace" }}>
+                      {currentScene.speaker}
+                    </div>
+                    <div className="text-[10px] text-gray-500">
+                      {currentScene.speaker === "Соник" ? "Освободительный фронт" :
+                       currentScene.speaker === "Тейлз" ? "Механик · Пилот" :
+                       currentScene.speaker === "Шэдоу" ? "Классификация неизвестна" :
+                       currentScene.speaker === "Эми" ? "Боец · 18+" :
+                       currentScene.speaker === "Наклз" ? "Страж Изумруда" :
+                       currentScene.speaker === "Руж" ? "Агент G.U.N. · 18+" :
+                       currentScene.speaker === "Эггман" ? "Dr. Ivo Robotnik" : ""}
+                    </div>
+                  </div>
                   {!textDone && <span className="ml-auto text-[10px] text-gray-600">нажмите для пропуска</span>}
                 </div>
                 <p className="text-gray-100 leading-relaxed text-sm">
