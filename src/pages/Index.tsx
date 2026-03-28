@@ -7,12 +7,18 @@ const IMG_BATTLE = "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c2
 type Screen = "menu" | "novel" | "battle" | "gallery" | "quests" | "relations" | "inventory" | "saves";
 
 const CHARACTERS = [
-  { id: 1, name: "Соник", role: "Герой скорости", color: "#00b4d8", emoji: "💙", relation: 85, faction: "Освободительный фронт", desc: "Непобедимый бегун Мобиуса. Сердце команды и символ свободы. Никогда не останавливается — ни в бою, ни в жизни.", portrait: "🦔" },
-  { id: 2, name: "Тейлз", role: "Гений механики", color: "#ffd60a", emoji: "💛", relation: 92, faction: "Освободительный фронт", desc: "Двухвостый лисёнок, мастер технологий и пилот Биплана. IQ за 300, сердце — золото.", portrait: "🦊" },
-  { id: 3, name: "Наклз", role: "Страж Изумруда", color: "#e63946", emoji: "❤️", relation: 60, faction: "Нейтрал", desc: "Хранитель Мастер Изумруда. Сила, честь и немного упрямства. Один удар его кулаков раскалывает скалы.", portrait: "🦔" },
-  { id: 4, name: "Эми", role: "Боец молота", color: "#ff006e", emoji: "🌸", relation: 78, faction: "Освободительный фронт", desc: "Розовый ёж с несгибаемой волей и огромным молотом. Страстная, дерзкая, опасно привлекательная — и она прекрасно это знает.", portrait: "🌸", isAdult: true },
-  { id: 5, name: "Шэдоу", role: "Ultima Hedgehog", color: "#9b5de5", emoji: "💜", relation: 35, faction: "Неизвестно", desc: "Тёмный двойник Соника. Живёт в тени, но сражается за правду. За его холодностью скрывается буря.", portrait: "🖤" },
-  { id: 6, name: "Руж", role: "Агент G.U.N.", color: "#ff79c6", emoji: "🦇", relation: 48, faction: "G.U.N.", desc: "Летучая мышь — воровка драгоценностей и профессиональный шпион. Мастер соблазна и манипуляций. Никогда не понять, где правда, а где игра.", portrait: "🦇", isAdult: true },
+  { id: 1,  name: "Соник",    role: "Герой скорости",       color: "#00b4d8", emoji: "💙", relation: 85, faction: "Освободительный фронт", desc: "Непобедимый бегун Мобиуса. Сердце команды и символ свободы. Никогда не останавливается — ни в бою, ни в жизни.", portrait: "🦔", isAdult: false },
+  { id: 2,  name: "Тейлз",   role: "Гений механики",        color: "#ffd60a", emoji: "💛", relation: 92, faction: "Освободительный фронт", desc: "Двухвостый лисёнок, мастер технологий и пилот Биплана. IQ за 300, сердце — золото.", portrait: "🦊", isAdult: false },
+  { id: 3,  name: "Наклз",   role: "Страж Изумруда",        color: "#e63946", emoji: "❤️", relation: 60, faction: "Нейтрал",                desc: "Хранитель Мастер Изумруда. Сила, честь и немного упрямства. Один удар его кулаков раскалывает скалы.", portrait: "🦔", isAdult: false },
+  { id: 4,  name: "Эми",     role: "Боец молота",           color: "#ff006e", emoji: "🌸", relation: 78, faction: "Освободительный фронт", desc: "Розовый ёж с несгибаемой волей и огромным молотом. Страстная, дерзкая, опасно привлекательная — и она прекрасно это знает.", portrait: "🌸", isAdult: true },
+  { id: 5,  name: "Шэдоу",   role: "Ultima Hedgehog",       color: "#9b5de5", emoji: "💜", relation: 35, faction: "Неизвестно",             desc: "Тёмный двойник Соника. Живёт в тени, но сражается за правду. За его холодностью скрывается буря.", portrait: "🖤", isAdult: false },
+  { id: 6,  name: "Руж",     role: "Агент G.U.N.",          color: "#ff79c6", emoji: "🦇", relation: 48, faction: "G.U.N.",                 desc: "Летучая мышь — воровка драгоценностей и профессиональный шпион. Мастер соблазна и манипуляций. Никогда не понять, где правда, а где игра.", portrait: "🦇", isAdult: true },
+  { id: 7,  name: "Салли",   role: "Принцесса-командир",    color: "#8b5cf6", emoji: "🐿️", relation: 55, faction: "Освободительный фронт", desc: "Принцесса Акорн и лидер повстанцев. Стратег с железной волей, умеет убедить кого угодно — взглядом или приказом.", portrait: "👑", isAdult: true },
+  { id: 8,  name: "Блейз",   role: "Страж Солнечного камня",color: "#f97316", emoji: "🔥", relation: 42, faction: "Сол-Измерение",          desc: "Кошка из другого измерения. Контролирует пламя, держится холодно — но огонь внутри не гасится никогда.", portrait: "🐱", isAdult: true },
+  { id: 9,  name: "Волнушка",role: "Механик-пират",         color: "#06b6d4", emoji: "🌊", relation: 33, faction: "Пираты Штормовых Морей",  desc: "Ехидна-пиратка с острым умом и ещё более острым языком. Чинит технику так же легко, как ломает сердца.", portrait: "🏴‍☠️", isAdult: true },
+  { id: 10, name: "Серебро",  role: "Телекинетик из будущего",color: "#c0c0c0", emoji: "⚡", relation: 50, faction: "Будущее",               desc: "Молодой ёж из апокалиптического будущего. Наивен, но его психокинетическая сила способна останавливать танки.", portrait: "🔮", isAdult: false },
+  { id: 11, name: "Эспио",   role: "Ниндзя-хамелеон",       color: "#a855f7", emoji: "🥷", relation: 38, faction: "Детектив Хаотик",        desc: "Бесшумный и невидимый ниндзя. Мало говорит, много знает. Его лезвие находит цель раньше, чем враг успевает моргнуть.", portrait: "🦎", isAdult: false },
+  { id: 12, name: "Марин",   role: "Авантюристка морей",     color: "#10b981", emoji: "🐾", relation: 65, faction: "Сол-Измерение",          desc: "Неугомонная енотовидная собачка. Громкая, дерзкая и обожает приключения. Лучший друг Блейз — и её полная противоположность.", portrait: "🌊", isAdult: false },
 ];
 
 const STORY_SCENES = [
@@ -140,6 +146,7 @@ export default function Index() {
   const [displayedText, setDisplayedText] = useState("");
   const [textDone, setTextDone] = useState(false);
   const [selectedChar, setSelectedChar] = useState<number | null>(null);
+  const [galleryTab, setGalleryTab] = useState<"all" | "female" | "scenes">("all");
   const [battleLog, setBattleLog] = useState<string[]>(["⚔️ Битва началась!"]);
   const [playerUnits, setPlayerUnits] = useState(INIT_PLAYER);
   const [enemyUnits, setEnemyUnits] = useState(INIT_ENEMY);
@@ -473,37 +480,136 @@ export default function Index() {
           <div className="min-h-[calc(100vh-48px)] p-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-lg font-black text-center mb-0.5 text-[var(--neon-cyan)]" style={{ fontFamily: "'Orbitron', monospace" }}>Галерея</h2>
-              <p className="text-center text-[10px] text-gray-500 mb-5">Персонажи и сцены Мобиуса</p>
-              <div className="grid grid-cols-2 gap-3 mb-5">
-                {[{ src: BG_MAIN, label: "Зелёные Холмы" }, { src: IMG_BATTLE, label: "Промышленная Зона" }].map(s => (
-                  <div key={s.label} className="rounded-xl overflow-hidden neon-border aspect-video relative group cursor-pointer">
-                    <img src={s.src} alt={s.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 p-3">
-                      <p className="text-xs font-bold">{s.label}</p>
-                    </div>
-                  </div>
+              <p className="text-center text-[10px] text-gray-500 mb-4">Персонажи и арты Мобиуса</p>
+
+              {/* Вкладки */}
+              <div className="flex gap-2 mb-5 p-1 rounded-xl bg-[rgba(0,0,0,0.4)] border border-[rgba(0,180,216,0.15)]">
+                {([["all","Все"], ["female","💋 Для взрослых"], ["scenes","Сцены"]] as const).map(([key, label]) => (
+                  <button key={key} onClick={() => setGalleryTab(key)}
+                    className={`flex-1 py-1.5 rounded-lg text-[11px] font-bold transition-all ${galleryTab === key ? "bg-[var(--neon-cyan)] text-[#0a0f1e]" : "text-gray-400 hover:text-white"}`}
+                    style={{ fontFamily: "'Orbitron', monospace" }}>
+                    {label}
+                  </button>
                 ))}
               </div>
-              <h3 className="text-[11px] font-black text-gray-400 mb-3 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>Персонажи</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {CHARACTERS.map(char => (
-                  <div key={char.id} className="char-card rounded-xl p-4 cursor-pointer" onClick={() => setSelectedChar(selectedChar === char.id ? null : char.id)}>
-                    <div className="text-4xl text-center mb-2">{char.emoji}</div>
-                    <div className="text-center">
-                      <div className="font-bold text-sm">{char.name}</div>
-                      <div className="text-[10px] text-gray-400 mb-1">{char.role}</div>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: `${char.color}20`, color: char.color, border: `1px solid ${char.color}40` }}>
-                        {char.faction}
-                      </span>
-                    </div>
-                    {selectedChar === char.id && (
-                      <div className="mt-3 pt-3 border-t border-gray-700 animate-fade-in">
-                        <p className="text-[11px] text-gray-300">{char.desc}</p>
+
+              {/* Вкладка: все персонажи */}
+              {galleryTab === "all" && (
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {CHARACTERS.map(char => (
+                    <div key={char.id} className="char-card rounded-xl p-4 cursor-pointer relative" onClick={() => setSelectedChar(selectedChar === char.id ? null : char.id)}>
+                      {char.isAdult && (
+                        <span className="absolute top-2 right-2 text-[9px] px-1.5 py-0.5 rounded border border-pink-500/50 text-pink-400 bg-pink-500/10" style={{ fontFamily: "'Orbitron', monospace" }}>18+</span>
+                      )}
+                      <div className="text-4xl text-center mb-2">{char.portrait}</div>
+                      <div className="text-center">
+                        <div className="font-bold text-sm">{char.name}</div>
+                        <div className="text-[10px] text-gray-400 mb-1">{char.role}</div>
+                        <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: `${char.color}20`, color: char.color, border: `1px solid ${char.color}40` }}>
+                          {char.faction}
+                        </span>
                       </div>
-                    )}
+                      {selectedChar === char.id && (
+                        <div className="mt-3 pt-3 border-t border-gray-700 animate-fade-in">
+                          <p className="text-[11px] text-gray-300">{char.desc}</p>
+                          <div className="mt-2 flex flex-wrap gap-1">
+                            {char.isAdult && <span className="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-400">18+ контент</span>}
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)]">
+                              ♥ {char.relation}/100
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Вкладка: взрослый контент */}
+              {galleryTab === "female" && (
+                <div>
+                  <div className="mb-4 panel rounded-xl p-3 border border-pink-500/20 text-center">
+                    <p className="text-[11px] text-pink-300">Контент только для взрослых 18+. Открывается по мере развития отношений с персонажами.</p>
                   </div>
-                ))}
-              </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {CHARACTERS.filter(c => c.isAdult).map(char => (
+                      <div key={char.id} className="rounded-2xl overflow-hidden relative cursor-pointer group"
+                        style={{ background: `linear-gradient(135deg, ${char.color}15 0%, #0a0f1e 100%)`, border: `1px solid ${char.color}40` }}
+                        onClick={() => setSelectedChar(selectedChar === char.id ? null : char.id)}>
+                        {/* Арт-заглушка */}
+                        <div className="relative aspect-[3/4] flex flex-col items-center justify-center overflow-hidden">
+                          <div className="text-[8rem] opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-500 select-none">
+                            {char.portrait}
+                          </div>
+                          {/* Частицы */}
+                          <div className="absolute inset-0 pointer-events-none" style={{
+                            backgroundImage: `radial-gradient(circle at 30% 40%, ${char.color}20 0%, transparent 50%), radial-gradient(circle at 70% 70%, ${char.color}15 0%, transparent 50%)`
+                          }} />
+                          {/* Лок если отношения низкие */}
+                          {char.relation < 70 ? (
+                            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm">
+                              <div className="text-4xl mb-2">🔒</div>
+                              <p className="text-xs text-gray-300 text-center px-4" style={{ fontFamily: "'Orbitron', monospace" }}>
+                                Требуется {70 - char.relation} ед. отношений
+                              </p>
+                              <div className="mt-2 hp-bar w-32">
+                                <div className="hp-fill" style={{ width: `${char.relation}%`, background: `linear-gradient(90deg, ${char.color}, ${char.color}aa)` }} />
+                              </div>
+                              <p className="text-[10px] text-gray-500 mt-1">{char.relation}/70 для разблокировки</p>
+                            </div>
+                          ) : (
+                            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4">
+                              <div className="text-[10px] text-pink-300 mb-1" style={{ fontFamily: "'Orbitron', monospace" }}>✦ РАЗБЛОКИРОВАНО</div>
+                              <p className="text-xs text-gray-200 italic leading-relaxed">
+                                {char.name === "Эми" && "«Ты думал, я просто с молотом хожу? Я умею быть и... другой. Если заслужишь~»"}
+                                {char.name === "Руж" && "«Разведчики всегда знают, чем взять противника. Хочешь узнать мой метод... лично?»"}
+                                {char.name === "Салли" && "«Принцесса умеет отдавать приказы. Но иногда... хочется подчиниться. Только для тебя.»"}
+                                {char.name === "Блейз" && "«Я контролирую огонь. Но с тобой рядом... контроль даётся сложнее, чем обычно.»"}
+                                {char.name === "Волнушка" && "«На пиратских кораблях нет правил. Особенно — ночью в доках. Ты ведь не против...?»"}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                        {/* Инфо */}
+                        <div className="p-4">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="font-black text-base" style={{ color: char.color, fontFamily: "'Orbitron', monospace" }}>{char.name}</span>
+                            <span className="text-[10px] px-2 py-0.5 rounded-full border border-pink-500/40 text-pink-400 bg-pink-500/10">18+</span>
+                          </div>
+                          <p className="text-[11px] text-gray-400">{char.role}</p>
+                          <div className="mt-2 hp-bar">
+                            <div className="hp-fill" style={{ width: `${char.relation}%`, background: `linear-gradient(90deg, ${char.color}, ${char.color}88)`, boxShadow: `0 0 8px ${char.color}66` }} />
+                          </div>
+                          <p className="text-[10px] text-gray-600 mt-0.5">Отношения: {char.relation}/100</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Вкладка: сцены */}
+              {galleryTab === "scenes" && (
+                <div className="grid grid-cols-2 gap-3">
+                  {[{ src: BG_MAIN, label: "Зелёные Холмы", tag: "Сюжет" }, { src: IMG_BATTLE, label: "Промышленная Зона", tag: "Битва" }].map(s => (
+                    <div key={s.label} className="rounded-xl overflow-hidden neon-border aspect-video relative group cursor-pointer">
+                      <img src={s.src} alt={s.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 p-3">
+                        <div className="text-[10px] text-[var(--sonic-gold)] mb-0.5">{s.tag}</div>
+                        <p className="text-xs font-bold">{s.label}</p>
+                      </div>
+                    </div>
+                  ))}
+                  {/* Locked scenes */}
+                  {["Станция Казино", "Остров Ангела", "Башня Эггмана", "Архив G.U.N."].map(name => (
+                    <div key={name} className="rounded-xl aspect-video relative flex flex-col items-center justify-center bg-[rgba(0,0,0,0.5)] border border-gray-800">
+                      <Icon name="Lock" size={20} className="text-gray-600 mb-1" />
+                      <p className="text-[10px] text-gray-600">{name}</p>
+                      <p className="text-[9px] text-gray-700">Разблокировать в сюжете</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
