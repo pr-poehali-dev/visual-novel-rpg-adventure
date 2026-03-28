@@ -7,6 +7,7 @@ export default {
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
+			"./1774729954741762072.html"
 	],
 	prefix: "",
 	theme: {
@@ -17,6 +18,11 @@ export default {
 				'2xl': '1400px'
 			}
 		},
+		fontFamily: {
+				orbitron: ['Orbitron', 'monospace'],
+				rubik: ['Rubik', 'sans-serif'],
+				russo: ['Russo One', 'sans-serif'],
+			},
 		extend: {
 			colors: {
 				border: 'hsl(var(--border))',
@@ -88,7 +94,13 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+				'slide-up': 'slide-up 0.5s ease-out forwards',
+				'fade-in': 'fade-in 0.4s ease-out forwards',
+				'title-glow': 'title-glow 3s ease-in-out infinite',
+				'ring-spin': 'ring-spin 4s linear infinite'
 			}
 		}
 	},
