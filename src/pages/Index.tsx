@@ -8,16 +8,31 @@ const CHAR_ARTS: Record<string, string> = {
   "Соник":    "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/80cdf363-e088-445f-a842-2e5a5a95c504.jpg",
   "Тейлз":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/b7e29491-7f59-4f17-b836-b9c56f7295ef.jpg",
   "Наклз":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/c9fb2014-7764-4740-8411-fdb42175d3ee.jpg",
-  "Эми":     "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/2812f028-5273-4928-ad62-0ca1faf786d2.jpg",
+  "Эми":     "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/f3996790-3c01-4de4-8b7e-dfe0f9302ffd.jpg",
   "Шэдоу":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/20e2f65d-7492-44fd-939d-eebcfe8b1c5b.jpg",
-  "Руж":     "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/fea26772-c6d4-4fe7-b4ab-86ce17b8fd17.jpg",
-  "Салли":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/f4d3e189-1039-47c2-b5f6-3d7975c012ae.jpg",
-  "Блейз":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/b0e0f67b-8e37-40f0-b31b-16a2f2b8480a.jpg",
-  "Волнушка":"https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/10c4752d-51f3-4aab-9911-d28affd73317.jpg",
+  "Руж":     "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/aa64d055-ace7-4006-874f-03fba8280a24.jpg",
+  "Салли":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/1871ad89-61f6-4b0e-83ad-cbe58495cae0.jpg",
+  "Блейз":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/3acc8663-bdb0-433d-b307-2074e69c0e55.jpg",
+  "Волнушка":"https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/a970d7aa-5a10-4867-97af-7ba63d47fdd4.jpg",
   "Серебро": "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/5a3a7ad7-ae43-4a67-b3e5-bdac8708d8e8.jpg",
   "Эспио":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/dca852aa-590a-4f2e-b98d-957a69e7cc5e.jpg",
   "Марин":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/87c24436-1b6f-4ecb-9e4d-743ebdbdfce6.jpg",
 };
+
+const BATTLE_MAPS = [
+  { id: 1, name: "Зелёные Холмы",    zone: "Зона 1", img: "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/229dd386-c53f-493a-a1cf-272b3a1a34b1.jpg", bg: "linear-gradient(135deg,#0a2a0a,#1a4a1a)", difficulty: 1, unlocked: true,  reward: "300 кругов",   enemies: [{name:"Эгг-Патруль",hp:60,maxHp:60,atk:20,def:10,emoji:"🤖"},{name:"Мото-Дрон",hp:45,maxHp:45,atk:25,def:8,emoji:"🛸"}] },
+  { id: 2, name: "Промзона",          zone: "Зона 2", img: "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/e68c114d-1bec-4328-bd55-b13896c462b3.jpg", bg: "linear-gradient(135deg,#2a0a0a,#4a1a0a)", difficulty: 2, unlocked: true,  reward: "600 кругов",   enemies: [{name:"Эгг-Нокер I",hp:100,maxHp:100,atk:30,def:25,emoji:"🤖"},{name:"Эгг-Нокер II",hp:80,maxHp:80,atk:35,def:18,emoji:"⚙️"}] },
+  { id: 3, name: "Казино Найт",       zone: "Зона 3", img: "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/b7a5ee64-2b74-4d1d-b40f-051a16bbde80.jpg", bg: "linear-gradient(135deg,#1a0a2a,#2a1a0a)", difficulty: 3, unlocked: true,  reward: "900 кругов",   enemies: [{name:"Гамблер-Бот",hp:120,maxHp:120,atk:38,def:20,emoji:"🎰"},{name:"Лазер-Джек",hp:95,maxHp:95,atk:42,def:15,emoji:"🃏"},{name:"Эгг-Джокер",hp:70,maxHp:70,atk:50,def:12,emoji:"🃏"}] },
+  { id: 4, name: "Остров Ангела",     zone: "Зона 4", img: IMG_BATTLE,                                                                                                                bg: "linear-gradient(135deg,#0a1a2a,#1a0a2a)", difficulty: 4, unlocked: false, reward: "1400 кругов",  enemies: [{name:"Страж Изумруда",hp:160,maxHp:160,atk:45,def:30,emoji:"💎"},{name:"Эгг-Дрилл",hp:130,maxHp:130,atk:40,def:28,emoji:"🔩"}] },
+  { id: 5, name: "Башня Эггмана",     zone: "Зона 5", img: IMG_BATTLE,                                                                                                                bg: "linear-gradient(135deg,#2a0505,#0a0a2a)", difficulty: 5, unlocked: false, reward: "2000 кругов",  enemies: [{name:"Эгг-Форт",hp:200,maxHp:200,atk:55,def:35,emoji:"🏰"},{name:"Мегалодон MK-V",hp:250,maxHp:250,atk:60,def:40,emoji:"🔴"}] },
+  { id: 6, name: "Лунная База ARK",   zone: "ФИНАЛ",  img: BG_MAIN,                                                                                                                  bg: "linear-gradient(135deg,#0a0a1a,#1a0a2a)", difficulty: 6, unlocked: false, reward: "Хаос-Изумруд", enemies: [{name:"Мех-Эггман",hp:350,maxHp:350,atk:70,def:45,emoji:"🥚"},{name:"Биза-БОТА",hp:180,maxHp:180,atk:65,def:30,emoji:"💀"}] },
+];
+
+const PLAYER_UNITS_BASE = [
+  { name: "Биплан Тейлза", hp: 120, maxHp: 120, atk: 35, def: 20, emoji: "✈️", special: "Бомбовый залп", spDmg: 60 },
+  { name: "Мото-Буггер",   hp: 90,  maxHp: 90,  atk: 45, def: 15, emoji: "🏎️", special: "Нитро-рывок",   spDmg: 70 },
+  { name: "Танк «Свобода»",hp: 160, maxHp: 160, atk: 40, def: 35, emoji: "🚂", special: "Шквальный огонь",spDmg: 55 },
+];
 
 type Screen = "menu" | "novel" | "battle" | "gallery" | "quests" | "relations" | "inventory" | "saves";
 
@@ -139,14 +154,7 @@ const SAVE_SLOTS = [
   { id: 3, name: "Слот 3", chapter: null as null, time: null as null, date: null as null },
 ];
 
-const INIT_PLAYER = [
-  { name: "Биплан Тейлза", hp: 120, maxHp: 120, atk: 35, def: 20, emoji: "✈️" },
-  { name: "Мото-Буггер", hp: 90, maxHp: 90, atk: 45, def: 15, emoji: "🏎️" },
-];
-const INIT_ENEMY = [
-  { name: "Эгг-Нокер I", hp: 100, maxHp: 100, atk: 30, def: 25, emoji: "🤖" },
-  { name: "Эгг-Нокер II", hp: 80, maxHp: 80, atk: 35, def: 18, emoji: "⚙️" },
-];
+
 
 const RARITY_COLORS: Record<string, string> = {
   legendary: "text-yellow-400 border-yellow-400/30 bg-yellow-400/5",
@@ -162,12 +170,17 @@ export default function Index() {
   const [textDone, setTextDone] = useState(false);
   const [selectedChar, setSelectedChar] = useState<number | null>(null);
   const [galleryTab, setGalleryTab] = useState<"all" | "female" | "scenes">("all");
-  const [battleLog, setBattleLog] = useState<string[]>(["⚔️ Битва началась!"]);
-  const [playerUnits, setPlayerUnits] = useState(INIT_PLAYER);
-  const [enemyUnits, setEnemyUnits] = useState(INIT_ENEMY);
+  const [battleLog, setBattleLog] = useState<string[]>(["⚔️ Выберите карту и начните бой!"]);
+  const [playerUnits, setPlayerUnits] = useState(PLAYER_UNITS_BASE.map(u => ({ ...u })));
+  const [enemyUnits, setEnemyUnits] = useState(BATTLE_MAPS[0].enemies.map(u => ({ ...u })));
   const [battleTurn, setBattleTurn] = useState<"player" | "enemy">("player");
   const [menuReady, setMenuReady] = useState(false);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
+  const [selectedMap, setSelectedMap] = useState<number | null>(null);
+  const [battlePhase, setBattlePhase] = useState<"map" | "fight" | "victory" | "defeat">("map");
+  const [wave, setWave] = useState(1);
+  const [totalWaves] = useState(3);
+  const [specialUsed, setSpecialUsed] = useState(false);
   const textRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const currentScene = STORY_SCENES[sceneIndex];
@@ -206,30 +219,72 @@ export default function Index() {
     setTextDone(true);
   };
 
-  const doBattleAction = (unitIdx: number) => {
+  const startBattle = (mapId: number) => {
+    const map = BATTLE_MAPS.find(m => m.id === mapId);
+    if (!map || !map.unlocked) return;
+    setSelectedMap(mapId);
+    setEnemyUnits(map.enemies.map(u => ({ ...u })));
+    setPlayerUnits(PLAYER_UNITS_BASE.map(u => ({ ...u })));
+    setBattleLog([`⚔️ Миссия: ${map.name} · Волна 1/${totalWaves}`]);
+    setBattleTurn("player");
+    setWave(1);
+    setSpecialUsed(false);
+    setBattlePhase("fight");
+  };
+
+  const doAttack = (unitIdx: number, isSpecial = false) => {
     if (battleTurn !== "player") return;
     const attacker = playerUnits[unitIdx];
     if (attacker.hp <= 0) return;
+    if (isSpecial && specialUsed) return;
     const aliveEnemy = enemyUnits.findIndex(u => u.hp > 0);
     if (aliveEnemy < 0) return;
     const target = enemyUnits[aliveEnemy];
-    const dmg = Math.max(5, attacker.atk - target.def + Math.floor(Math.random() * 15));
+    const base = isSpecial ? ((attacker as typeof PLAYER_UNITS_BASE[0]).spDmg ?? attacker.atk * 2) : attacker.atk;
+    const dmg = Math.max(5, base - target.def + Math.floor(Math.random() * 15));
+    if (isSpecial) setSpecialUsed(true);
     const newEnemy = enemyUnits.map((u, i) => i === aliveEnemy ? { ...u, hp: Math.max(0, u.hp - dmg) } : u);
     setEnemyUnits(newEnemy);
-    setBattleLog(prev => [`💥 ${attacker.name} → ${target.name}: -${dmg} HP`, ...prev.slice(0, 6)]);
+    const tag = isSpecial ? `✨ СПЕЦУДАР` : `💥 Атака`;
+    setBattleLog(prev => [`${tag} ${attacker.name} → ${target.name}: -${dmg} HP`, ...prev.slice(0, 7)]);
+
+    const allDead = newEnemy.every(u => u.hp <= 0);
+    if (allDead) {
+      const map = BATTLE_MAPS.find(m => m.id === selectedMap)!;
+      if (wave >= totalWaves) {
+        setBattleLog(prev => [`🏆 ПОБЕДА! Получено: ${map.reward}`, ...prev.slice(0, 7)]);
+        setBattlePhase("victory");
+        return;
+      }
+      const nextWave = wave + 1;
+      setWave(nextWave);
+      const scaledEnemies = map.enemies.map(u => ({ ...u, hp: Math.round(u.maxHp * (1 + nextWave * 0.3)), maxHp: Math.round(u.maxHp * (1 + nextWave * 0.3)), atk: u.atk + nextWave * 5 }));
+      setEnemyUnits(scaledEnemies);
+      setSpecialUsed(false);
+      setBattleLog(prev => [`🌊 Волна ${nextWave}/${totalWaves} началась!`, ...prev.slice(0, 7)]);
+      setBattleTurn("player");
+      return;
+    }
+
     setBattleTurn("enemy");
     setTimeout(() => {
       const atkEnemy = newEnemy.find(u => u.hp > 0);
       if (atkEnemy) {
         const alivePlayer = playerUnits.findIndex(u => u.hp > 0);
         if (alivePlayer >= 0) {
-          const dmg2 = Math.max(5, atkEnemy.atk - playerUnits[alivePlayer].def + Math.floor(Math.random() * 10));
-          setPlayerUnits(prev => prev.map((u, i) => i === alivePlayer ? { ...u, hp: Math.max(0, u.hp - dmg2) } : u));
-          setBattleLog(prev => [`🤖 ${atkEnemy.name} ↩ -${dmg2} HP`, ...prev.slice(0, 6)]);
+          const dmg2 = Math.max(5, atkEnemy.atk - playerUnits[alivePlayer].def + Math.floor(Math.random() * 12));
+          const updatedPlayer = playerUnits.map((u, i) => i === alivePlayer ? { ...u, hp: Math.max(0, u.hp - dmg2) } : u);
+          setPlayerUnits(updatedPlayer);
+          setBattleLog(prev => [`🤖 ${atkEnemy.name} ↩ -${dmg2} HP`, ...prev.slice(0, 7)]);
+          if (updatedPlayer.every(u => u.hp <= 0)) {
+            setBattlePhase("defeat");
+            setBattleLog(prev => ["💀 ПОРАЖЕНИЕ. Попробуйте ещё раз.", ...prev.slice(0, 7)]);
+            return;
+          }
         }
       }
       setBattleTurn("player");
-    }, 900);
+    }, 800);
   };
 
   const NAV: { key: Screen; label: string; icon: string }[] = [
@@ -422,76 +477,189 @@ export default function Index() {
 
         {/* ── BATTLE ───────────────────────────── */}
         {screen === "battle" && (
-          <div className="min-h-[calc(100vh-48px)] p-4 relative overflow-hidden">
-            <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: `url(${IMG_BATTLE})` }} />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/90 to-[#0a0f1e]" />
-            <div className="relative z-10 max-w-xl mx-auto">
-              <h2 className="text-lg font-black text-center mb-0.5 text-[var(--neon-cyan)]" style={{ fontFamily: "'Orbitron', monospace" }}>⚔️ Танковая Битва</h2>
-              <p className="text-center text-[10px] text-gray-500 mb-4">Промышленная Зона · Волна 1/3</p>
+          <div className="min-h-[calc(100vh-48px)] relative overflow-hidden">
 
-              <div className="grid grid-cols-2 gap-3 mb-4">
-                <div>
-                  <div className="text-[10px] text-[var(--sonic-gold)] mb-2 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>🛡 Союзники</div>
-                  {playerUnits.map((unit, i) => (
-                    <div
-                      key={i}
-                      className={`panel rounded-xl p-3 mb-2 transition-all ${battleTurn === "player" && unit.hp > 0 ? "neon-border cursor-pointer hover:-translate-y-1" : "opacity-60"} ${unit.hp <= 0 ? "opacity-20" : ""}`}
-                      onClick={() => doBattleAction(i)}
-                    >
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-2xl">{unit.emoji}</span>
-                        <div>
-                          <div className="text-[11px] font-bold">{unit.name}</div>
-                          <div className="text-[10px] text-gray-400">⚔️{unit.atk} 🛡{unit.def}</div>
+            {/* КАРТА МИССИЙ */}
+            {battlePhase === "map" && (
+              <div className="p-4">
+                <h2 className="text-lg font-black text-center mb-0.5 text-[var(--neon-cyan)]" style={{ fontFamily: "'Orbitron', monospace" }}>⚔️ Выбор миссии</h2>
+                <p className="text-center text-[10px] text-gray-500 mb-5">6 карт · 3 волны каждая</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-2xl mx-auto">
+                  {BATTLE_MAPS.map(map => (
+                    <div key={map.id}
+                      className={`rounded-2xl overflow-hidden relative cursor-pointer group transition-all ${map.unlocked ? "hover:-translate-y-1" : "opacity-50 cursor-not-allowed"}`}
+                      style={{ border: `1px solid ${map.unlocked ? "rgba(0,180,216,0.4)" : "rgba(100,100,100,0.2)"}` }}
+                      onClick={() => map.unlocked && startBattle(map.id)}>
+                      {/* Карта-изображение */}
+                      <div className="aspect-video relative overflow-hidden">
+                        <img src={map.img} alt={map.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <div className="absolute inset-0" style={{ background: map.bg.replace("linear-gradient", "linear-gradient") + "cc" }} />
+                        {/* Сложность */}
+                        <div className="absolute top-2 right-2 flex gap-0.5">
+                          {Array.from({ length: 6 }).map((_, i) => (
+                            <div key={i} className={`w-2 h-2 rounded-full ${i < map.difficulty ? "bg-[var(--sonic-gold)]" : "bg-gray-700"}`} />
+                          ))}
+                        </div>
+                        {!map.unlocked && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/60">
+                            <Icon name="Lock" size={28} className="text-gray-400" />
+                          </div>
+                        )}
+                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 p-3">
+                          <div className="text-[9px] text-[var(--sonic-gold)] tracking-widest uppercase" style={{ fontFamily: "'Orbitron', monospace" }}>{map.zone}</div>
+                          <div className="text-sm font-black text-white">{map.name}</div>
                         </div>
                       </div>
-                      <div className="hp-bar"><div className="hp-fill" style={{ width: `${(unit.hp / unit.maxHp) * 100}%` }} /></div>
-                      <div className="text-[10px] text-gray-500 mt-1">{unit.hp}/{unit.maxHp} HP</div>
-                      {battleTurn === "player" && unit.hp > 0 && <div className="text-[10px] text-[var(--neon-cyan)] mt-1">▸ Нажмите для атаки</div>}
+                      {/* Инфо */}
+                      <div className="p-3 bg-[#0a0f1e]">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex gap-1 flex-wrap">
+                            {map.enemies.map((e, i) => (
+                              <span key={i} className="text-[10px] px-1.5 py-0.5 rounded bg-red-900/30 text-red-400 border border-red-800/40">{e.emoji} {e.name}</span>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] text-gray-500">3 волны</span>
+                          <span className="text-[10px] text-[var(--sonic-gold)] font-bold">🏆 {map.reward}</span>
+                        </div>
+                        {map.unlocked && (
+                          <button className="game-btn-primary w-full mt-2 text-[11px] py-1.5">▶ Начать миссию</button>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
-                <div>
-                  <div className="text-[10px] text-[var(--sonic-red)] mb-2 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>💀 Враги</div>
-                  {enemyUnits.map((unit, i) => (
-                    <div key={i} className={`panel rounded-xl p-3 mb-2 ${unit.hp <= 0 ? "opacity-20" : ""}`}>
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-2xl">{unit.emoji}</span>
-                        <div>
-                          <div className="text-[11px] font-bold">{unit.name}</div>
-                          <div className="text-[10px] text-gray-400">⚔️{unit.atk} 🛡{unit.def}</div>
+              </div>
+            )}
+
+            {/* БОЙ */}
+            {(battlePhase === "fight" || battlePhase === "victory" || battlePhase === "defeat") && selectedMap && (() => {
+              const map = BATTLE_MAPS.find(m => m.id === selectedMap)!;
+              return (
+                <div className="relative">
+                  <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: `url(${map.img})` }} />
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/80 to-[#0a0f1e]" />
+                  <div className="relative z-10 p-4 max-w-xl mx-auto">
+
+                    {/* Шапка */}
+                    <div className="flex items-center justify-between mb-3">
+                      <button className="text-[10px] text-gray-500 hover:text-white flex items-center gap-1" onClick={() => setBattlePhase("map")}>
+                        <Icon name="ChevronLeft" size={12} /> Карты
+                      </button>
+                      <div className="text-center">
+                        <div className="text-xs font-black text-[var(--neon-cyan)]" style={{ fontFamily: "'Orbitron', monospace" }}>{map.name}</div>
+                        <div className="text-[10px] text-[var(--sonic-gold)]">Волна {wave}/{totalWaves}</div>
+                      </div>
+                      <div className="flex gap-0.5">
+                        {Array.from({ length: totalWaves }).map((_, i) => (
+                          <div key={i} className={`w-5 h-1.5 rounded-full ${i < wave ? "bg-[var(--sonic-gold)]" : "bg-gray-700"}`} />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Victory / Defeat overlay */}
+                    {battlePhase === "victory" && (
+                      <div className="panel rounded-2xl p-6 mb-4 text-center border border-yellow-400/30 bg-yellow-400/5 animate-slide-up">
+                        <div className="text-5xl mb-2">🏆</div>
+                        <div className="text-lg font-black text-[var(--sonic-gold)] mb-1" style={{ fontFamily: "'Orbitron', monospace" }}>ПОБЕДА!</div>
+                        <div className="text-sm text-gray-300 mb-3">Получено: <span className="text-[var(--sonic-gold)] font-bold">{map.reward}</span></div>
+                        <button className="game-btn-gold text-sm" onClick={() => setBattlePhase("map")}>← Выбрать миссию</button>
+                      </div>
+                    )}
+                    {battlePhase === "defeat" && (
+                      <div className="panel rounded-2xl p-6 mb-4 text-center border border-red-500/30 bg-red-500/5 animate-slide-up">
+                        <div className="text-5xl mb-2">💀</div>
+                        <div className="text-lg font-black text-red-400 mb-1" style={{ fontFamily: "'Orbitron', monospace" }}>ПОРАЖЕНИЕ</div>
+                        <div className="text-sm text-gray-400 mb-3">Отряд уничтожен</div>
+                        <div className="flex gap-2 justify-center">
+                          <button className="game-btn-primary text-sm" onClick={() => startBattle(selectedMap)}>↺ Повтор</button>
+                          <button className="game-btn-secondary text-sm" onClick={() => setBattlePhase("map")}>← Карты</button>
                         </div>
                       </div>
-                      <div className="hp-bar">
-                        <div className="hp-fill" style={{ width: `${(unit.hp / unit.maxHp) * 100}%`, background: "linear-gradient(90deg,#e63946,#ff6b6b)", boxShadow: "0 0 8px rgba(230,57,70,0.5)" }} />
+                    )}
+
+                    {/* Юниты */}
+                    <div className="grid grid-cols-2 gap-3 mb-3">
+                      <div>
+                        <div className="text-[10px] text-[var(--sonic-gold)] mb-2 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>🛡 Союзники</div>
+                        {playerUnits.map((unit, i) => (
+                          <div key={i}
+                            className={`panel rounded-xl p-3 mb-2 transition-all ${battlePhase === "fight" && battleTurn === "player" && unit.hp > 0 ? "neon-border cursor-pointer hover:-translate-y-0.5" : "opacity-60"} ${unit.hp <= 0 ? "opacity-20" : ""}`}
+                            onClick={() => battlePhase === "fight" && doAttack(i)}>
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <span className="text-xl">{unit.emoji}</span>
+                              <div>
+                                <div className="text-[11px] font-bold leading-tight">{unit.name}</div>
+                                <div className="text-[10px] text-gray-400">⚔️{unit.atk} 🛡{unit.def}</div>
+                              </div>
+                            </div>
+                            <div className="hp-bar"><div className="hp-fill" style={{ width: `${(unit.hp / unit.maxHp) * 100}%` }} /></div>
+                            <div className="text-[10px] text-gray-500 mt-1">{unit.hp}/{unit.maxHp} HP</div>
+                            {battlePhase === "fight" && battleTurn === "player" && unit.hp > 0 && <div className="text-[9px] text-[var(--neon-cyan)] mt-0.5">▸ атаковать</div>}
+                          </div>
+                        ))}
                       </div>
-                      <div className="text-[10px] text-gray-500 mt-1">{unit.hp}/{unit.maxHp} HP</div>
+                      <div>
+                        <div className="text-[10px] text-red-400 mb-2 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>💀 Враги</div>
+                        {enemyUnits.map((unit, i) => (
+                          <div key={i} className={`panel rounded-xl p-3 mb-2 ${unit.hp <= 0 ? "opacity-20" : ""}`}>
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <span className="text-xl">{unit.emoji}</span>
+                              <div>
+                                <div className="text-[11px] font-bold leading-tight">{unit.name}</div>
+                                <div className="text-[10px] text-gray-400">⚔️{unit.atk} 🛡{unit.def}</div>
+                              </div>
+                            </div>
+                            <div className="hp-bar">
+                              <div className="hp-fill" style={{ width: `${(unit.hp / unit.maxHp) * 100}%`, background: "linear-gradient(90deg,#e63946,#ff6b6b)", boxShadow: "0 0 8px rgba(230,57,70,0.4)" }} />
+                            </div>
+                            <div className="text-[10px] text-gray-500 mt-1">{unit.hp}/{unit.maxHp} HP</div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
 
-              <div className="panel rounded-xl p-3 mb-3">
-                <div className="text-[10px] text-gray-500 mb-2 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>
-                  {battleTurn === "player" ? "🎯 Выберите юнит — нажмите на него выше" : "⏳ Ответный удар..."}
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <button className="battle-btn bg-[var(--sonic-blue)] text-[#0a0f1e] text-[11px] py-2 disabled:opacity-30" disabled={battleTurn !== "player"} onClick={() => doBattleAction(0)}>
-                    ⚡ Атака — {playerUnits[0].name}
-                  </button>
-                  <button className="battle-btn bg-[var(--sonic-gold)] text-[#0a0f1e] text-[11px] py-2 disabled:opacity-30" disabled={battleTurn !== "player"} onClick={() => doBattleAction(1)}>
-                    ✈️ Атака — {playerUnits[1].name}
-                  </button>
-                </div>
-              </div>
+                    {/* Кнопки действий */}
+                    {battlePhase === "fight" && (
+                      <div className="panel rounded-xl p-3 mb-3">
+                        <div className="text-[10px] text-gray-500 mb-2 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>
+                          {battleTurn === "player" ? "🎯 Действие" : "⏳ Ход врага..."}
+                        </div>
+                        <div className="grid grid-cols-3 gap-1.5">
+                          {playerUnits.map((u, i) => (
+                            <button key={i}
+                              className="battle-btn bg-[var(--sonic-blue)] text-[#0a0f1e] text-[10px] py-1.5 disabled:opacity-30"
+                              disabled={battleTurn !== "player" || u.hp <= 0}
+                              onClick={() => doAttack(i)}>
+                              {u.emoji} {u.name.split(" ")[0]}
+                            </button>
+                          ))}
+                        </div>
+                        <div className="grid grid-cols-3 gap-1.5 mt-1.5">
+                          {playerUnits.map((u, i) => (
+                            <button key={i}
+                              className={`battle-btn text-[10px] py-1.5 disabled:opacity-30 ${specialUsed ? "bg-gray-700 text-gray-400" : "bg-[var(--sonic-gold)] text-[#0a0f1e]"}`}
+                              disabled={battleTurn !== "player" || u.hp <= 0 || specialUsed}
+                              onClick={() => doAttack(i, true)}>
+                              ✨ {(u as typeof PLAYER_UNITS_BASE[0]).special?.split(" ")[0] ?? "Спецудар"}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
-              <div className="panel rounded-xl p-3">
-                <div className="text-[10px] text-gray-500 mb-2 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>Лог битвы</div>
-                {battleLog.map((log, i) => (
-                  <div key={i} className={`text-[11px] py-0.5 ${i === 0 ? "text-white" : "text-gray-600"}`}>{log}</div>
-                ))}
-              </div>
-            </div>
+                    {/* Лог */}
+                    <div className="panel rounded-xl p-3">
+                      <div className="text-[10px] text-gray-500 mb-1.5 uppercase tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>Лог битвы</div>
+                      {battleLog.map((log, i) => (
+                        <div key={i} className={`text-[11px] py-0.5 border-b border-gray-800/30 ${i === 0 ? "text-white" : "text-gray-600"}`}>{log}</div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         )}
 
