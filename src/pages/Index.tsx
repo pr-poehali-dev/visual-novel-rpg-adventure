@@ -4,6 +4,21 @@ import Icon from "@/components/ui/icon";
 const BG_MAIN = "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/88dbb5a6-39c1-42c5-a8e9-632ade825c5f.jpg";
 const IMG_BATTLE = "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/23e90129-8892-40cd-96b7-0203ca82117a.jpg";
 
+const CHAR_ARTS: Record<string, string> = {
+  "Соник":    "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/80cdf363-e088-445f-a842-2e5a5a95c504.jpg",
+  "Тейлз":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/b7e29491-7f59-4f17-b836-b9c56f7295ef.jpg",
+  "Наклз":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/c9fb2014-7764-4740-8411-fdb42175d3ee.jpg",
+  "Эми":     "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/2812f028-5273-4928-ad62-0ca1faf786d2.jpg",
+  "Шэдоу":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/20e2f65d-7492-44fd-939d-eebcfe8b1c5b.jpg",
+  "Руж":     "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/fea26772-c6d4-4fe7-b4ab-86ce17b8fd17.jpg",
+  "Салли":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/f4d3e189-1039-47c2-b5f6-3d7975c012ae.jpg",
+  "Блейз":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/b0e0f67b-8e37-40f0-b31b-16a2f2b8480a.jpg",
+  "Волнушка":"https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/10c4752d-51f3-4aab-9911-d28affd73317.jpg",
+  "Серебро": "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/5a3a7ad7-ae43-4a67-b3e5-bdac8708d8e8.jpg",
+  "Эспио":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/dca852aa-590a-4f2e-b98d-957a69e7cc5e.jpg",
+  "Марин":   "https://cdn.poehali.dev/projects/cc218517-5c8c-43ba-8e51-4c21f62c0ec0/files/87c24436-1b6f-4ecb-9e4d-743ebdbdfce6.jpg",
+};
+
 type Screen = "menu" | "novel" | "battle" | "gallery" | "quests" | "relations" | "inventory" | "saves";
 
 const CHARACTERS = [
@@ -318,62 +333,67 @@ export default function Index() {
 
         {/* ── VISUAL NOVEL ─────────────────────── */}
         {screen === "novel" && (
-          <div className="min-h-[calc(100vh-48px)] flex flex-col justify-end relative" style={{ background: currentScene.bg }}>
+          <div className="min-h-[calc(100vh-48px)] flex flex-col justify-end relative overflow-hidden" style={{ background: currentScene.bg }}>
             <div className="absolute inset-0 star-field opacity-25 pointer-events-none" />
 
-            {/* Персонаж-фон */}
-            <div className="absolute inset-0 flex items-end justify-center pointer-events-none pb-48">
-              <div className="text-[14rem] opacity-15 animate-float leading-none select-none">
-                {currentScene.speaker === "Соник" ? "🦔" :
-                 currentScene.speaker === "Тейлз" ? "🦊" :
-                 currentScene.speaker === "Шэдоу" ? "🖤" :
-                 currentScene.speaker === "Эми" ? "🌸" :
-                 currentScene.speaker === "Наклз" ? "👊" :
-                 currentScene.speaker === "Руж" ? "🦇" :
-                 currentScene.speaker === "Эггман" ? "🥚" : "🌌"}
+            {/* Арт персонажа — полноэкранный */}
+            {CHAR_ARTS[currentScene.speaker] ? (
+              <div className="absolute inset-0 flex items-end justify-center pointer-events-none">
+                <div className="relative h-[78%] aspect-[3/4] animate-float">
+                  <img
+                    src={CHAR_ARTS[currentScene.speaker]}
+                    alt={currentScene.speaker}
+                    className="h-full w-full object-cover object-top"
+                    style={{
+                      maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+                      WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+                      filter: "drop-shadow(0 0 30px rgba(0,0,0,0.8))",
+                    }}
+                  />
+                  {/* Цветовой ореол под персонажем */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-24 rounded-full blur-3xl opacity-40 pointer-events-none"
+                    style={{ background: currentScene.speakerColor }} />
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="absolute inset-0 flex items-end justify-center pointer-events-none pb-48">
+                <div className="text-[12rem] opacity-10 animate-float leading-none select-none">🌌</div>
+              </div>
+            )}
 
             <div className="absolute top-3 left-3 text-[10px] text-[var(--sonic-gold)] tracking-[0.2em] uppercase" style={{ fontFamily: "'Orbitron', monospace" }}>
               Глава 1 · Сцена {sceneIndex + 1}/{STORY_SCENES.length}
             </div>
 
-            {/* 18+ метка для Эми и Руж */}
-            {(currentScene.speaker === "Эми" || currentScene.speaker === "Руж") && (
+            {/* 18+ метка */}
+            {CHARACTERS.find(c => c.name === currentScene.speaker)?.isAdult && (
               <div className="absolute top-3 right-3 text-[10px] px-2 py-0.5 rounded border border-pink-500/50 text-pink-400 bg-pink-500/10" style={{ fontFamily: "'Orbitron', monospace" }}>
                 18+
               </div>
             )}
 
             <div className="relative z-10 p-4 pb-6">
-              <div className="dialogue-box rounded-2xl p-5 mb-3" onClick={!textDone ? skipText : undefined} style={{ cursor: !textDone ? "pointer" : "default" }}>
+              <div className="dialogue-box rounded-2xl p-4 mb-3" onClick={!textDone ? skipText : undefined} style={{ cursor: !textDone ? "pointer" : "default" }}>
                 <div className="flex items-center gap-3 mb-3">
-                  {/* Портрет */}
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center text-2xl shrink-0"
-                    style={{ background: `${currentScene.speakerColor}20`, border: `1px solid ${currentScene.speakerColor}50` }}>
-                    {currentScene.speaker === "Соник" ? "🦔" :
-                     currentScene.speaker === "Тейлз" ? "🦊" :
-                     currentScene.speaker === "Шэдоу" ? "🖤" :
-                     currentScene.speaker === "Эми" ? "🌸" :
-                     currentScene.speaker === "Наклз" ? "👊" :
-                     currentScene.speaker === "Руж" ? "🦇" :
-                     currentScene.speaker === "Эггман" ? "🥚" : "📖"}
+                  {/* Миниатюра портрета */}
+                  <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 border-2"
+                    style={{ borderColor: currentScene.speakerColor + "80" }}>
+                    {CHAR_ARTS[currentScene.speaker] ? (
+                      <img src={CHAR_ARTS[currentScene.speaker]} alt={currentScene.speaker} className="w-full h-full object-cover object-top" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-2xl"
+                        style={{ background: `${currentScene.speakerColor}20` }}>📖</div>
+                    )}
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs font-black tracking-widest uppercase" style={{ color: currentScene.speakerColor, fontFamily: "'Orbitron', monospace" }}>
                       {currentScene.speaker}
                     </div>
                     <div className="text-[10px] text-gray-500">
-                      {currentScene.speaker === "Соник" ? "Освободительный фронт" :
-                       currentScene.speaker === "Тейлз" ? "Механик · Пилот" :
-                       currentScene.speaker === "Шэдоу" ? "Классификация неизвестна" :
-                       currentScene.speaker === "Эми" ? "Боец · 18+" :
-                       currentScene.speaker === "Наклз" ? "Страж Изумруда" :
-                       currentScene.speaker === "Руж" ? "Агент G.U.N. · 18+" :
-                       currentScene.speaker === "Эггман" ? "Dr. Ivo Robotnik" : ""}
+                      {CHARACTERS.find(c => c.name === currentScene.speaker)?.role ?? ""}
                     </div>
                   </div>
-                  {!textDone && <span className="ml-auto text-[10px] text-gray-600">нажмите для пропуска</span>}
+                  {!textDone && <span className="text-[10px] text-gray-600 shrink-0">нажмите ›</span>}
                 </div>
                 <p className="text-gray-100 leading-relaxed text-sm">
                   {displayedText}
@@ -497,29 +517,43 @@ export default function Index() {
               {galleryTab === "all" && (
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {CHARACTERS.map(char => (
-                    <div key={char.id} className="char-card rounded-xl p-4 cursor-pointer relative" onClick={() => setSelectedChar(selectedChar === char.id ? null : char.id)}>
+                    <div key={char.id} className="char-card rounded-xl overflow-hidden cursor-pointer relative group"
+                      onClick={() => setSelectedChar(selectedChar === char.id ? null : char.id)}>
                       {char.isAdult && (
-                        <span className="absolute top-2 right-2 text-[9px] px-1.5 py-0.5 rounded border border-pink-500/50 text-pink-400 bg-pink-500/10" style={{ fontFamily: "'Orbitron', monospace" }}>18+</span>
+                        <span className="absolute top-2 right-2 z-10 text-[9px] px-1.5 py-0.5 rounded border border-pink-500/50 text-pink-400 bg-pink-500/10" style={{ fontFamily: "'Orbitron', monospace" }}>18+</span>
                       )}
-                      <div className="text-4xl text-center mb-2">{char.portrait}</div>
-                      <div className="text-center">
+                      {/* Арт */}
+                      <div className="aspect-[3/4] overflow-hidden relative">
+                        {CHAR_ARTS[char.name] ? (
+                          <img src={CHAR_ARTS[char.name]} alt={char.name}
+                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-6xl"
+                            style={{ background: `linear-gradient(135deg, ${char.color}20, #0a0f1e)` }}>
+                            {char.portrait}
+                          </div>
+                        )}
+                        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a0f1e] to-transparent" />
+                      </div>
+                      {/* Инфо */}
+                      <div className="p-3 -mt-2 relative">
                         <div className="font-bold text-sm">{char.name}</div>
                         <div className="text-[10px] text-gray-400 mb-1">{char.role}</div>
                         <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: `${char.color}20`, color: char.color, border: `1px solid ${char.color}40` }}>
                           {char.faction}
                         </span>
-                      </div>
-                      {selectedChar === char.id && (
-                        <div className="mt-3 pt-3 border-t border-gray-700 animate-fade-in">
-                          <p className="text-[11px] text-gray-300">{char.desc}</p>
-                          <div className="mt-2 flex flex-wrap gap-1">
-                            {char.isAdult && <span className="text-[10px] px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-400">18+ контент</span>}
-                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--neon-cyan)]/10 text-[var(--neon-cyan)]">
-                              ♥ {char.relation}/100
-                            </span>
+                        {selectedChar === char.id && (
+                          <div className="mt-2 pt-2 border-t border-gray-700/50 animate-fade-in">
+                            <p className="text-[11px] text-gray-300 leading-relaxed">{char.desc}</p>
+                            <div className="mt-2">
+                              <div className="hp-bar">
+                                <div className="hp-fill" style={{ width: `${char.relation}%`, background: `linear-gradient(90deg, ${char.color}, ${char.color}88)` }} />
+                              </div>
+                              <p className="text-[10px] text-gray-500 mt-0.5">♥ Отношения: {char.relation}/100</p>
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -534,32 +568,40 @@ export default function Index() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {CHARACTERS.filter(c => c.isAdult).map(char => (
                       <div key={char.id} className="rounded-2xl overflow-hidden relative cursor-pointer group"
-                        style={{ background: `linear-gradient(135deg, ${char.color}15 0%, #0a0f1e 100%)`, border: `1px solid ${char.color}40` }}
+                        style={{ border: `1px solid ${char.color}40` }}
                         onClick={() => setSelectedChar(selectedChar === char.id ? null : char.id)}>
-                        {/* Арт-заглушка */}
-                        <div className="relative aspect-[3/4] flex flex-col items-center justify-center overflow-hidden">
-                          <div className="text-[8rem] opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-500 select-none">
-                            {char.portrait}
-                          </div>
-                          {/* Частицы */}
+                        {/* Арт */}
+                        <div className="relative aspect-[3/4] overflow-hidden">
+                          {CHAR_ARTS[char.name] ? (
+                            <img src={CHAR_ARTS[char.name]} alt={char.name}
+                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center text-8xl"
+                              style={{ background: `linear-gradient(135deg, ${char.color}20, #0a0f1e)` }}>
+                              {char.portrait}
+                            </div>
+                          )}
+                          {/* Цветовой оверлей */}
                           <div className="absolute inset-0 pointer-events-none" style={{
-                            backgroundImage: `radial-gradient(circle at 30% 40%, ${char.color}20 0%, transparent 50%), radial-gradient(circle at 70% 70%, ${char.color}15 0%, transparent 50%)`
+                            background: `linear-gradient(to bottom, transparent 40%, ${char.color}10 70%, #0a0f1e 100%)`
                           }} />
                           {/* Лок если отношения низкие */}
-                          {char.relation < 70 ? (
-                            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm">
-                              <div className="text-4xl mb-2">🔒</div>
-                              <p className="text-xs text-gray-300 text-center px-4" style={{ fontFamily: "'Orbitron', monospace" }}>
-                                Требуется {70 - char.relation} ед. отношений
+                          {char.relation < 70 && (
+                            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 backdrop-blur-[6px]">
+                              <div className="text-5xl mb-3">🔒</div>
+                              <p className="text-xs text-gray-200 text-center px-4 mb-3" style={{ fontFamily: "'Orbitron', monospace" }}>
+                                Нужно ещё {70 - char.relation} ед. отношений
                               </p>
-                              <div className="mt-2 hp-bar w-32">
+                              <div className="hp-bar w-36">
                                 <div className="hp-fill" style={{ width: `${char.relation}%`, background: `linear-gradient(90deg, ${char.color}, ${char.color}aa)` }} />
                               </div>
-                              <p className="text-[10px] text-gray-500 mt-1">{char.relation}/70 для разблокировки</p>
+                              <p className="text-[10px] text-gray-500 mt-1">{char.relation}/70</p>
                             </div>
-                          ) : (
-                            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4">
-                              <div className="text-[10px] text-pink-300 mb-1" style={{ fontFamily: "'Orbitron', monospace" }}>✦ РАЗБЛОКИРОВАНО</div>
+                          )}
+                          {/* Разблокировано */}
+                          {char.relation >= 70 && (
+                            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-4">
+                              <div className="text-[10px] text-pink-300 mb-1 tracking-widest" style={{ fontFamily: "'Orbitron', monospace" }}>✦ РАЗБЛОКИРОВАНО</div>
                               <p className="text-xs text-gray-200 italic leading-relaxed">
                                 {char.name === "Эми" && "«Ты думал, я просто с молотом хожу? Я умею быть и... другой. Если заслужишь~»"}
                                 {char.name === "Руж" && "«Разведчики всегда знают, чем взять противника. Хочешь узнать мой метод... лично?»"}
@@ -571,16 +613,16 @@ export default function Index() {
                           )}
                         </div>
                         {/* Инфо */}
-                        <div className="p-4">
+                        <div className="p-3" style={{ background: `linear-gradient(135deg, ${char.color}10, #0a0f1e)` }}>
                           <div className="flex items-center justify-between mb-1">
-                            <span className="font-black text-base" style={{ color: char.color, fontFamily: "'Orbitron', monospace" }}>{char.name}</span>
-                            <span className="text-[10px] px-2 py-0.5 rounded-full border border-pink-500/40 text-pink-400 bg-pink-500/10">18+</span>
+                            <span className="font-black text-sm" style={{ color: char.color, fontFamily: "'Orbitron', monospace" }}>{char.name}</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded-full border border-pink-500/40 text-pink-400 bg-pink-500/10">18+</span>
                           </div>
-                          <p className="text-[11px] text-gray-400">{char.role}</p>
-                          <div className="mt-2 hp-bar">
+                          <p className="text-[11px] text-gray-400 mb-2">{char.role}</p>
+                          <div className="hp-bar">
                             <div className="hp-fill" style={{ width: `${char.relation}%`, background: `linear-gradient(90deg, ${char.color}, ${char.color}88)`, boxShadow: `0 0 8px ${char.color}66` }} />
                           </div>
-                          <p className="text-[10px] text-gray-600 mt-0.5">Отношения: {char.relation}/100</p>
+                          <p className="text-[10px] text-gray-600 mt-0.5">♥ {char.relation}/100</p>
                         </div>
                       </div>
                     ))}
